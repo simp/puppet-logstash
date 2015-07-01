@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'puppetlabs_spec_helper/rake_tasks'
 require 'puppet/version'
 require 'puppet/vendor/semantic/lib/semantic' unless Puppet.version.to_f < 3.6
@@ -77,4 +76,3 @@ task :test => [
   :spec,
   :metadata,
 ]
->>>>>>> 454fb03... (SIMP-231) Integrate the public logstash module
