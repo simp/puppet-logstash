@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ad9bd40_17c7ba46",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "We probably don\u0027t want this for our fork of this module.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_57c1422d",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "^^ Same with this.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 42
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_77dd6614",
+        "filename": ".travis.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "I\u0027ve been leaving this enabled in until we have a strong team opinion.  Thoughts?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_d7ec72ca",
+        "filename": "manifests/simp.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "validations should be at the top",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 38
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_f7d096f9",
+        "filename": "manifests/simp/clean.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "Validations shohuld be at the top",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad9bd40_17ceda5a",
+        "filename": "manifests/simp/optimize.pp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1005143
+      },
+      "writtenOn": "2015-07-01T03:53:47Z",
+      "side": 1,
+      "message": "validations should be at the top",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 32
+      },
+      "revId": "f1ac2d425406229b4ed1b1970968988f3d4d6aa6",
+      "serverId": "d5d70762-12d0-45a1-890d-524b12d3f735",
+      "unresolved": false
+    }
+  ]
+}
