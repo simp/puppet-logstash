@@ -24,75 +24,20 @@
 #
 # === Authors
 #
-# * Richard Pijnenburg <mailto:richard@ispavailability.com>
+# * Richard Pijnenburg <mailto:richard.pijnenburg@elasticsearch.com>
 #
 class logstash::service {
 
-  #### Service management
+  case $logstash::service_provider {
 
-  # set params: in operation
-  if $logstash::ensure == 'present' {
-
-    case $logstash::status {
-      # make sure service is currently running, start it on boot
-      'enabled': {
-        $service_ensure = 'running'
-        $service_enable = true
-      }
-      # make sure service is currently stopped, do not start it on boot
-      'disabled': {
-        $service_ensure = 'stopped'
-        $service_enable = false
-      }
-      # make sure service is currently running, do not start it on boot
-      'running': {
-        $service_ensure = 'running'
-        $service_enable = false
-      }
-      # do not start service on boot, do not care whether currently running or not
-      'unmanaged': {
-        $service_ensure = undef
-        $service_enable = false
-      }
-      # unknown status
-      # note: don't forget to update the parameter check in init.pp if you
-      #       add a new or change an existing status.
-      default: {
-        fail("\"${logstash::status}\" is an unknown service status value")
-      }
+    'init': {
+      logstash::service::init { $logstash::params::service_name: }
     }
 
-  # set params: removal
-  } else {
-
-    # make sure the service is stopped and disabled (the removal itself will be
-    # done by package.pp)
-    $service_ensure = 'stopped'
-    $service_enable = false
-
-  }
-
-  # Remove the init file and service from the package if we install it via a package
-  if $logstash::provider == 'package' {
-    file { '/etc/init.d/logstash':
-      ensure => absent
+    default: {
+      fail("Unknown service provider ${logstash::service_provider}")
     }
 
-    service { 'logstash':
-      ensure => 'stopped',
-      enable => false
-    }
-  }
-
-  # Only not managed the init file when we are using an external jar file and use an other service manager
-  # TODO: This is an ugly hack for now because i can't think up a better solution.
-  if ($logstash::jarfile != undef and $logstash::status == 'unmanaged') {
-    # Don't manage the service
-  } else {
-    logstash::servicefile { $logstash::instances:
-      service_enable => $service_enable,
-      service_ensure => $service_ensure
-    }
   }
 
 }

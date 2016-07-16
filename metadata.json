@@ -1,24 +1,30 @@
 {
-  "name": "simp-logstash",
-  "version": "0.1.0",
-  "author": "SIMP",
-  "summary": "Module for managing and configuring Logstash",
+  "name": "elasticsearch-logstash",
+  "version": "0.6.4",
+  "source": "https://github.com/elastic/puppet-logstash",
+  "author": "elasticsearch",
   "license": "Apache-2.0",
-  "source": "https://github.com/simp/puppet-logstash",
-  "project_page": "https://github.com/simp/puppet-logstash",
-  "issues_url": "https://simp-project.atlassian.net",
-  "tags": [ "simp" ],
+  "summary": "Module for managing and configuring Logstash",
+  "description": "Module for managing and configuring Logstash",
+  "project_page": "https://github.com/elastic/puppet-logstash",
   "dependencies": [
     {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.1.0"
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 3.2.0 <5.0.0"
     },
     {
-      "name": "simp-iptables",
-      "version_requirement": ">= 4.1.0"
+      "name": "electrical/file_concat",
+      "version_requirement": ">= 0.1.0 <2.0.0"
     }
   ],
   "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
@@ -27,11 +33,48 @@
       ]
     },
     {
-      "operatingsystem": "RedHat",
+      "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    },
+    {
+      "operatingsystem": "OpenSuSE",
+      "operatingsystemrelease": [
+        "13.x"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.2.0 <5.0.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">=3.2.0 <5.0.0"
     }
   ]
 }

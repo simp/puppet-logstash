@@ -1,43 +1,43 @@
-# Variables:
-#
-# SIMP_GEM_SERVERS | a space/comma delimited list of rubygem servers
-# PUPPET_VERSION   | specifies the version of the puppet gem to load
-puppetversion = ENV.key?('PUPPET_VERSION') ? "#{ENV['PUPPET_VERSION']}" : ['~>3']
-gem_sources   = ENV.key?('SIMP_GEM_SERVERS') ? ENV['SIMP_GEM_SERVERS'].split(/[, ]+/) : ['https://rubygems.org']
+source 'https://rubygems.org'
+ruby '1.9.3'
 
-gem_sources.each { |gem_source| source gem_source }
+puppetversion = ENV['PUPPET_VERSION'] || '3.8.6'
+gem 'puppet', puppetversion, :require => false
 
-group :test do
-  gem "rake"
-  gem 'puppet', puppetversion
-  gem "rspec", '< 3.2.0'
-  gem "rspec-puppet", :git => 'https://github.com/rodjek/rspec-puppet.git'
-  gem "puppetlabs_spec_helper"
-  gem "metadata-json-lint"
-  gem "rspec-puppet-facts"
+gem 'beaker', '2.34.0'
+gem 'beaker-rspec', '5.3.0'
 
-  # simp-rake-helpers does not suport puppet 2.7.X
-  # FIXME: simp-rake-helpers should support Puppet 4.X
-  if (!(['2','4'].include?( "#{ENV['PUPPET_VERSION']}".split('.').first)) &&
-      ("#{ENV['PUPPET_VERSION']}" !~ /~> ?(2|4)/ ? true : false) ) &&
-      # simp-rake-helpers and ruby 1.8.7 bomb Travis tests
-      # TODO: fix upstream deps (parallel in simp-rake-helpers)
-      !( ENV['TRAVIS'] && RUBY_VERSION.sub(/\.\d+$/,'') == '1.8' )
-    gem 'simp-rake-helpers'
-  end
-end
+# REF: https://github.com/voxpupuli/metadata-json-lint/issues/10
+# gem 'metadata-json-lint'
 
-group :development do
-  gem "travis"
-  gem "travis-lint"
-  gem "vagrant-wrapper"
-  gem "puppet-blacksmith"
-  gem "guard-rake"
-  gem 'pry'
-  gem 'pry-doc'
-end
+gem 'rspec-puppet'
 
-group :system_tests do
-  gem "beaker"
-  gem "beaker-rspec"
-end
+gem 'pry'
+gem 'pry-rescue'
+gem 'docker-api', '~> 1.0'
+gem 'rubysl-securerandom'
+gem 'ci_reporter_rspec'
+gem 'google-api-client', '0.9.4' # 0.9.5 needs Ruby 2.
+gem 'rspec', '~> 3.0'
+gem 'rake'
+gem 'puppet-doc-lint'
+gem 'puppet-lint'
+gem 'puppet-strings' if puppetversion =~ /^(3\.[789]|4\.)/
+gem 'puppetlabs_spec_helper'
+gem 'puppet-syntax'
+gem 'rspec-puppet-facts'
+gem 'rubocop'
+gem 'serverspec', '2.34.0'
+gem 'specinfra', '2.57.2'
+gem 'webmock'
+gem 'redcarpet'
+
+# Extra Puppet-lint gems
+gem 'puppet-lint-appends-check', :require => false
+gem 'puppet-lint-version_comparison-check', :require => false
+gem 'puppet-lint-unquoted_string-check', :require => false
+gem 'puppet-lint-undef_in_function-check', :require => false
+gem 'puppet-lint-trailing_comma-check', :require => false
+gem 'puppet-lint-leading_zero-check', :require => false
+gem 'puppet-lint-file_ensure-check', :require => false
+gem 'puppet-lint-empty_string-check', :require => false

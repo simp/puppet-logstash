@@ -19,18 +19,32 @@
 #
 # === Authors
 #
-# * Richard Pijnenburg <mailto:richard@ispavailability.com>
+# * Richard Pijnenburg <mailto:richard.pijnenburg@elasticsearch.com>
+# * Matthias Baur <mailto:matthias.baur@dmc.de>
 #
 class logstash::java {
 
   if $logstash::java_package == undef {
     # Default Java package
     case $::operatingsystem {
-      'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon': {
-        $package = 'java-1.6.0-openjdk'
+      'CentOS', 'Fedora', 'Scientific', 'RedHat', 'Amazon', 'OracleLinux': {
+        $package = 'java-1.7.0-openjdk'
       }
       'Debian', 'Ubuntu': {
-        $package = 'openjdk-6-jre-headless'
+        case $::lsbdistcodename {
+          'squeeze': {
+            $package = 'openjdk-6-jre-headless'
+          }
+          default: {
+            $package = 'openjdk-7-jre-headless'
+          }
+        }
+      }
+      'OpenSuSE': {
+        $package = 'java-1_7_0-openjdk'
+      }
+      'SLES': {
+        $package = 'java-1_7_0-ibm'
       }
       default: {
         fail("\"${module_name}\" provides no java package
@@ -44,7 +58,7 @@ class logstash::java {
   ## Install the java package unless already specified somewhere else
   if !defined(Package[$package]) {
     package { $package:
-      ensure => present
+      ensure => present,
     }
   }
 }
